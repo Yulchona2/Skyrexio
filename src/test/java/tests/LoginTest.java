@@ -10,19 +10,16 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void checkLogin() {
-
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
         driver.findElement(By.xpath("//*[@placeholder='Password']")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
         String title = driver.findElement(By.cssSelector("[data-test='title']")).getText();
-
         assertEquals(title, "Products");
     }
 
     @Test
     public void checkIncorrectLogin() {
-
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("locked_out_user");
         driver.findElement(By.xpath("//*[@placeholder='Password']")).sendKeys("secret_sauce");
@@ -33,4 +30,3 @@ public class LoginTest extends BaseTest {
         assertEquals(errorMessage, "Epic sadface: Sorry, this user has been locked out.");
     }
 }
-
