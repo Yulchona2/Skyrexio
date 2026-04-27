@@ -22,6 +22,7 @@ public class ProductsTest extends BaseTest {
             productsPage.addToCart(goods);
         }
         assertEquals(productsPage.checkCounterValue(), "4");
-        assertEquals(productsPage.checkCounterColor(), "rgba(226, 35, 26, 1)");
+        String actualColor = productsPage.checkCounterColor();
+        assertTrue(actualColor.equals("rgba(226, 35, 26, 1)") || actualColor.equals("rgb(226, 35, 26)"));
     }
 }
