@@ -10,14 +10,14 @@ import static user.UserFactory.*;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void checkLogin() {
         loginPage.open();
         loginPage.login(withAdminPermission());
         assertEquals(productsPage.getTitle(), "Products");
     }
 
-    @Test(dataProvider = "loginData")
+    @Test(dataProvider = "loginData", priority = 2)
     public void checkIncorrectLogin(User user, String errorMessage) {
         loginPage.open();
         loginPage.login(user);
