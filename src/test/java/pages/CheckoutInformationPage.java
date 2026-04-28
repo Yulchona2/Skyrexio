@@ -11,7 +11,6 @@ public class CheckoutInformationPage extends BasePage {
     private final By continueButton = By.cssSelector(DATA_TEST_PATTERN.formatted("continue"));
     private final By errorMsg = By.cssSelector(DATA_TEST_PATTERN.formatted("error"));
 
-
     public CheckoutInformationPage(WebDriver driver) {
         super(driver);
     }
