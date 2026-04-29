@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,6 +26,7 @@ public class BaseTest {
     CheckoutOverviewPage checkoutOverviewPage;
 
     @Parameters({"browser"})
+    @Step("Запуск браузера")
     @BeforeMethod
     public void setup(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
@@ -60,6 +62,7 @@ public class BaseTest {
         checkoutOverviewPage = new CheckoutOverviewPage(driver);
     }
 
+    @Step("Закрытие браузера")
     @AfterMethod
     public void close() {
         driver.quit();
