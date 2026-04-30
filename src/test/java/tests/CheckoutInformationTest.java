@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -7,9 +11,12 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static user.UserFactory.withAdminPermission;
 
+@Feature("Оформление заказа")
 public class CheckoutInformationTest extends BaseTest {
 
-    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Story("Переход на страницу ввода данных")
+    @Test(description = "Проверка перехода на страницу Checkout: Your Information", priority = 1)
     public void checkGoToInformationPage() {
         loginPage.open();
         loginPage.login(withAdminPermission());
@@ -20,7 +27,9 @@ public class CheckoutInformationTest extends BaseTest {
         assertEquals(checkoutInformationPage.getInformationTitle(), "Checkout: Your Information");
     }
 
-    @Test(dataProvider = "informationData")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Валидация формы ввода данных")
+    @Test(dataProvider = "informationData", description = "Проверка ошибок при неверном заполнении формы", priority = 2)
     public void checkEnterInCorrectInformation(String firstName, String lastName, String postalCode, String errorMessage) {
         loginPage.open();
         loginPage.login(withAdminPermission());

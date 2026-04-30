@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,28 +16,34 @@ public class CheckoutInformationPage extends BasePage {
         super(driver);
     }
 
+    @Step("Проверка отображения заголовка страницы 'Checkout: Your Information'")
     public boolean pageInformationTitleDisplayed() {
         return driver.findElement(pageInformationTitle).isDisplayed();
     }
 
+    @Step("Получение текста заголовка страницы оформления заказа")
     public String getInformationTitle() {
         return driver.findElement(pageInformationTitle).getText();
     }
 
+    @Step("Заполнение информации о покупателе")
     public void enterInformation(String firstName, String lastName, String postalCode) {
         driver.findElement(firstNameField).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(postalCodeField).sendKeys(postalCode);
     }
 
+    @Step("Нажатие кнопки 'Continue' для перехода к CheckoutOverview")
     public void clickBtnGoToCheckoutOverview() {
         driver.findElement(continueButton).click();
     }
 
+    @Step("Проверка отображения сообщения об ошибке")
     public boolean isErrorMsgDisplayed() {
         return driver.findElement(errorMsg).isDisplayed();
     }
 
+    @Step("Получение текста сообщения об ошибке")
     public String getErrorMsg() {
         return driver.findElement(errorMsg).getText();
     }

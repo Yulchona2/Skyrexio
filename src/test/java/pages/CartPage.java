@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,14 +19,17 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    @Step("Проверка отображения заголовка страницы корзины")
     public boolean pageCartTitleDisplayed() {
         return driver.findElement(pageCartTitle).isDisplayed();
     }
 
+    @Step("Получение текста заголовка страницы корзины")
     public String getCartTitle() {
         return driver.findElement(pageCartTitle).getText();
     }
 
+    @Step("Получение списка названий товаров в корзине")
     public ArrayList<String> getProductsNamesInTheCart() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(continueShopping));
         List<WebElement> allProducts = driver.findElements(product);
@@ -37,6 +41,7 @@ public class CartPage extends BasePage {
         return names;
     }
 
+    @Step("Переход к оформлению заказа")
     public void goToCheckoutYourInformation() {
         driver.findElement(checkout).click();
     }
