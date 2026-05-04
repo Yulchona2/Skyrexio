@@ -27,15 +27,19 @@ public class CheckoutInformationPage extends BasePage {
     }
 
     @Step("Заполнение информации о покупателе")
-    public void enterInformation(String firstName, String lastName, String postalCode) {
+    public CheckoutInformationPage enterInformation(String firstName, String lastName, String postalCode) {
         driver.findElement(firstNameField).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(postalCodeField).sendKeys(postalCode);
+
+        return this;
     }
 
     @Step("Нажатие кнопки 'Continue' для перехода к CheckoutOverview")
-    public void clickBtnGoToCheckoutOverview() {
+    public CheckoutInformationPage clickBtnGoToCheckoutOverview() {
         driver.findElement(continueButton).click();
+
+        return this;
     }
 
     @Step("Проверка отображения сообщения об ошибке")

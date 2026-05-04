@@ -6,6 +6,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
+import static enums.TitleNamesOfPages.CHECKOUT_OVERVIEW;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static user.UserFactory.withAdminPermission;
@@ -17,14 +18,18 @@ public class CheckoutOverviewTest extends BaseTest {
     @Story("Переход на страницу подтверждения заказа")
     @Test(description = "Проверка перехода на страницу Checkout: Overview", priority = 1)
     public void checkMoveToCheckoutInformation() {
-        loginPage.open();
-        loginPage.login(withAdminPermission());
-        productsPage.addToCart();
-        productsPage.goToCart();
-        cartPage.goToCheckoutYourInformation();
-        checkoutInformationPage.enterInformation("Мария", "Иванова", "555");
-        checkoutInformationPage.clickBtnGoToCheckoutOverview();
+        loginPage
+                .open()
+                .login(withAdminPermission());
+        productsPage
+                .addToCart()
+                .goToCart();
+        cartPage.
+                goToCheckoutYourInformation();
+        checkoutInformationPage
+                .enterInformation("Мария", "Иванова", "555")
+                .clickBtnGoToCheckoutOverview();
         assertTrue(checkoutOverviewPage.checkoutTitleDisplayed());
-        assertEquals(checkoutOverviewPage.getCheckoutTitle(), "Checkout: Overview");
+        assertEquals(checkoutOverviewPage.getCheckoutTitle(), CHECKOUT_OVERVIEW.getDisplayName());
     }
 }

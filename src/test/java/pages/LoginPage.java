@@ -16,15 +16,19 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Открытие сайта")
-    public void open() {
+    public LoginPage open() {
         driver.get(BASE_URL);
+
+        return this;
     }
 
     @Step("Логинимся под кредами пользователя, нажимаем кнопку Login")
-    public void login(User user) {
+    public LoginPage login(User user) {
         driver.findElement(userField).sendKeys(user.getLogin());
         driver.findElement(passwordField).sendKeys(user.getPassword());
         driver.findElement(submitButton).click();
+
+        return this;
     }
 
     @Step("Проверка отображения сообщения об ошибке")
