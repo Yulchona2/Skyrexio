@@ -17,6 +17,7 @@
         <webdrivermanage.version>6.3.4</webdrivermanage.version>
         <aspectjweaver.version>1.9.25.1</aspectjweaver.version>
         <allure.version>2.29.1</allure.version>
+        <lombok.version>1.18.46</lombok.version>
     </properties>
 
     <dependencies>
@@ -44,7 +45,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 

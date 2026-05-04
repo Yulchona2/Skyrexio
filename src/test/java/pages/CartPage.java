@@ -42,7 +42,9 @@ public class CartPage extends BasePage {
     }
 
     @Step("Переход к оформлению заказа")
-    public void goToCheckoutYourInformation() {
+    public CartPage goToCheckoutYourInformation() {
         driver.findElement(checkout).click();
+
+        return this;
     }
 }

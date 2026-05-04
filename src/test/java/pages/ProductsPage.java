@@ -21,8 +21,10 @@ public class ProductsPage extends BasePage {
     }
 
     @Step("Добавление первого товара в корзину")
-    public void addToCart() {
+    public ProductsPage addToCart() {
         driver.findElements(addToCartBtn).getFirst().click();
+
+        return this;
     }
 
     @Step("Подсчет количества товаров на странице")
@@ -31,9 +33,11 @@ public class ProductsPage extends BasePage {
     }
 
     @Step("Добавление товара '{goodsName}' в корзину")
-    public void addToCart(final String goodsName) {
+    public ProductsPage addToCart(final String goodsName) {
         By addToCart = By.xpath(ADD_TO_CART_PATTERN.formatted(goodsName));
         driver.findElement(addToCart).click();
+
+        return this;
     }
 
     @Step("Проверка отображения заголовка страницы товаров")
@@ -52,7 +56,9 @@ public class ProductsPage extends BasePage {
     }
 
     @Step("Переход в корзину")
-    public void goToCart() {
+    public ProductsPage goToCart() {
         driver.findElement(cartLink).click();
+
+        return this;
     }
 }
